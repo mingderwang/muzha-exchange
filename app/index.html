@@ -56,6 +56,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 </head>
 
 <body unresolved class="fullbleed layout vertical">
+  <firebase-auth id="baseLogin" user="{{user}}" statusKnown="{{statusKnown}}" location="https://katdataset.firebaseio.com" provider="github" on-login="{{onLogin}}" on-error="{{onLoginError}}">
+  </firebase-auth>
   <span id="browser-sync-binding"></span>
   <template is="dom-bind" id="app">
 
@@ -96,6 +98,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <paper-icon-button icon="refresh"></paper-icon-button>
           <paper-icon-button icon="search"></paper-icon-button>
 
+          <!== firebase-auth login-->
+          <paper-item on-click="{{login}}" hidden?="{{!statusKnown || user}}">Login</paper-item>
+          <paper-item on-click="{{logout}}" hidden?="{{!statusKnown || !user}}">Logout</paper-item>
+          <template if="{{user}}">{{user.github.username}}</template>
+
           <!-- Application name -->
           <div class="middle paper-font-display2 app-name">Polymer Starter Kit</div>
 
@@ -121,7 +128,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <paper-material elevation="1">
                 <firebase-collection
                   order-by-child="height"
-                  limit-to-first="5"
+                  limit-to-first="3"
                   location="https://dinosaur-facts.firebaseio.com/dinosaurs"
                   data="{{dinosaurs}}">
                 </firebase-collection>
