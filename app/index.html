@@ -117,8 +117,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 <p class="paper-font-body2">Looking for more Web App layouts? Check out our <a href="https://github.com/PolymerElements/app-layout-templates">layouts</a> collection. You can also <a href="http://polymerelements.github.io/app-layout-templates/">preview</a> them live.</p>
               </paper-material>
+
               <paper-material elevation="1">
-                <p class="paper-font-body2">This is another card.</p>
+                <firebase-collection
+                  order-by-child="height"
+                  limit-to-first="5"
+                  location="https://dinosaur-facts.firebaseio.com/dinosaurs"
+                  data="{{dinosaurs}}">
+                </firebase-collection>
+                <template is="dom-repeat" items="[[dinosaurs]]" as="dinosaur">
+                  <h4>[[dinosaur.__firebaseKey__]]</h4>
+                  <span>Height: </span><span>[[dinosaur.height]]</span><span>m</span>
+                </template>
               </paper-material>
 
               <paper-material elevation="1" class="paper-font-body2">
