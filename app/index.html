@@ -56,10 +56,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 </head>
 
 <body unresolved class="fullbleed layout vertical">
-  <firebase-auth id="baseLogin" user="{{user}}" statusKnown="{{statusKnown}}" location="https://katdataset.firebaseio.com" provider="github" on-login="{{onLogin}}" on-error="{{onLoginError}}">
-  </firebase-auth>
   <span id="browser-sync-binding"></span>
+
   <template is="dom-bind" id="app">
+
+  <firebase-auth id="baseLogin" user="{{user}}" statusKnown="{{statusKnown}}" location="https://katdataset.firebaseio.com" provider="github" on-login="onLogin" on-error="onLoginError">
+  </firebase-auth>
+  <pvc-globals id='default'></pvc-globals>
 
     <paper-drawer-panel id="paperDrawerPanel">
       <div drawer>
@@ -88,23 +91,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </paper-menu>
       </div>
       <paper-header-panel main mode="waterfall-tall">
-
-        <!-- Main Toolbar -->
         <paper-toolbar id="mainToolbar">
           <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
           <span class="flex"></span>
 
-          <!-- Toolbar icons -->
-          <paper-icon-button icon="refresh"></paper-icon-button>
-          <paper-icon-button icon="search"></paper-icon-button>
+            <!-- Toolbar icons -->
+            <paper-icon-button icon="refresh"></paper-icon-button>
+            <paper-icon-button icon="search"></paper-icon-button>
 
-          <!== firebase-auth login-->
-          <paper-item on-click="{{login}}" hidden?="{{!statusKnown || user}}">Login</paper-item>
-          <paper-item on-click="{{logout}}" hidden?="{{!statusKnown || !user}}">Logout</paper-item>
+          <!-- firebase-auth login-->
+          <paper-item on-click="login" hidden?="{{!statusKnown || user}}">Login</paper-item>
+          <paper-item on-click="logout" hidden?="{{!statusKnown || !user}}">Logout</paper-item>
           <template if="{{user}}">{{user.github.username}}</template>
 
           <!-- Application name -->
-          <div class="middle paper-font-display2 app-name">Polymer Starter Kit</div>
+          <div class="middle paper-font-display2 app-name">Muzha</div>
 
           <!-- Application sub title -->
           <div class="bottom title"></div>
@@ -183,7 +184,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </paper-material>
             </section>
 
-          </iron-pages>
+            </iron-pages>
         </div>
       </paper-header-panel>
     </paper-drawer-panel>
@@ -203,7 +204,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </platinum-sw-register>
 
   </template>
-
   <!-- build:js scripts/app.js -->
   <script src="scripts/app.js"></script>
   <!-- endbuild-->

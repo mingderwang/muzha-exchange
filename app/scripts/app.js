@@ -37,5 +37,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       drawerPanel.closeDrawer();
     }
   };
+  app.logout = function() {
+    this.$.baseLogin.logout();
+    console.log('logout!');
+  };
+  app.login = function() {
+    this.$.baseLogin.login();
+  };
+  app.onLogin = function() {
+    this.$.default.user = this.user;
+    console.log(this.$.default.user);
+  };
+  app.onLoginError = function() {
+    console.log('login error!');
+  };
 
 })(document);
