@@ -43,10 +43,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   };
   app.login = function() {
     this.$.baseLogin.login();
+    console.log('login!');
   };
   app.onLogin = function() {
     this.$.default.user = this.user;
-    console.log(this.$.default.user);
+    this.$.default.statusKnown = this.statusKnown;
+    console.log(this.statusKnown);
   };
   app.onLoginError = function() {
     console.log('login error!');

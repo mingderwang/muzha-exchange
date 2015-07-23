@@ -9,7 +9,8 @@
     "page": "visionmedia/page.js#~1.6.3",
     "pvc-globals": "Divshot/pvc-globals#~0.1.0",
     "firebase": "~2.2.7",
-    "firebase-element": "GoogleWebComponents/firebase-element#^1.0.0"
+    "firebase-element": "GoogleWebComponents/firebase-element#^1.0.0",
+    "web-component-tester": "Polymer/web-component-tester#~3.3.3"
   },
   "devDependencies": {
     "web-component-tester": "*",
