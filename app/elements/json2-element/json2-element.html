@@ -1,0 +1,29 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="json2-element" attributes="">
+    <template>
+    <link rel="stylesheet" href="json2-element.css">
+
+   <iron-ajax auto
+        url="https://www.googleapis.com/youtube/v3/search"
+        params='{"part":"snippet", "q":"polymer", "key": "AIzaSyAuecFZ9xJXbGDkQYWBmYrtzOGJD-iDIgI", "type": "video"}'
+        handle-as="json"
+        last-response="{{ajaxResponse}}"></iron-ajax>
+<p>MING</p>
+<template is="dom-repeat" items="[[ajaxResponse.items]]">
+        <div>
+          <h2><a href="[[url(item.id.videoId)]]" target="_blank">[[item.snippet.title]]</a></h2>
+          <iron-image src="[[item.snippet.thumbnails.high.url]]" width="256" height="256" sizing="cover" preload fade></iron-image>
+          <p>[[item.snippet.description]]</p>
+        </div>
+      </template>
+    </template>
+  <script>
+    (function () {
+      Polymer({
+        // define element prototype here
+      });
+    })();
+  </script>
+</dom-module>
