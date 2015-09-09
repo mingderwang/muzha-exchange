@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+div2 {
+        display: inline-block;
+        background-color: #ccc;
+        border-radius: 8px;
+        padding: 4px;
+      }
